@@ -1,14 +1,14 @@
-# 数据源配置
+# 数据源配置 ---linux中直接修改jar包内配置文件(避免重新打jar包)
 spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.cj.jdbc.Driver
         druid:
-            # 主库数据源
+            # 主库数据源 localhost 47.111.110.196
             master:
-                url: jdbc:mysql://localhost:3306/luckyframe?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-                username: root
-                password: 
+                url: jdbc:mysql://47.111.110.196:3306/luckyframe?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+                username: luckyframe #root
+                password: 1qaz!QAZ
             # 从库数据源
             slave:
                 # 从数据源开关/默认关闭
