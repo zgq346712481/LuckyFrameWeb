@@ -78,9 +78,19 @@
 
 > 如果你有任何的想法或是建议那就给我留个言吧
 >本地环境IDE启动服务:
- http://192.168.15.58:8082
+http://192.168.15.58:8083/
  admin--admin
 >luckyframeV3.0新版
  http://alibaba588.com:8082/login
  luckyframe--luckyframe
  admin--admin 
+
+>服务端-->客户端心跳监测：
+心跳监测，客户端起一个端口服务，服务端每隔3秒发起监听请求，如果两端版本号匹配，则连接状态正常
+>http://192.168.15.58:6633/getClientStatus
+selectTaskCaseExecuteList---selectTaskExecuteById
+
+>luckyFrameClient:
+springboot.HttpImpl.java;
+@GetMapping("/getClientStatus")
+>
