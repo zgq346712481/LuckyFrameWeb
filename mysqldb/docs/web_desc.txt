@@ -1,0 +1,35 @@
+1 获取测试用例列表详情
+http://192.168.15.58:8083/testmanagmt/projectCase/list"
+
+用例模块
+GET http://192.168.15.58:8083/testmanagmt/projectCaseModule/list HTTP/1.1
+
+[{"searchValue":null,"createBy":"admin","createTime":"2019-02-13 10:27:32","updateBy":"luckyframe","updateTime":"2019-02-13 10:27:32","remark":"初始化数据","params":{},"moduleId":1,"moduleName":"测试项目一","projectId":1,"parentId":0,"ancestors":"0","orderNum":0,"projectName":"测试项目一","project":null},{"searchValue":null,"createBy":"admin","createTime":"2019-10-08 17:23:38","updateBy":"admin","updateTime":"2019-10-08 17:23:38","remark":"项目初始化模块","params":{},"moduleId":2,"moduleName":"webUI自动化测试演示项目","projectId":2,"parentId":0,"ancestors":"0","orderNum":1,"projectName":"webUI自动化测试演示项目","project":null}]
+
+用例编辑
+GET http://192.168.15.58:8083/testmanagmt/projectCaseSteps/edit/1 HTTP/1.1
+
+获取测试用例对象
+GetServerApi
+http://192.168.15.58:8083/openGetApi/clientGetCaseListByPlanId.do?planId=1
+
+/clientGetCaseListByPlanName.do?planName=
+
+
+http://192.168.15.58:8083/clientGetStepListByCaseId.do?caseId=1
+baiduDemo-1
+
+
+2.任务调度列表
+ http://192.168.15.58:8083/testexecution/taskScheduling/list HTTP/1.1
+
+ pageSize=10&pageNum=1&orderByColumn=&isAsc=asc&projectId=
+
+ {"total":1,"rows":[{"searchValue":null,"createBy":null,"createTime":null,"updateBy":null,"updateTime":null,"remark":null,"params":{},"schedulingId":1,"schedulingName":"百度页面搜索","jobId":101,"projectId":2,"planId":1,"clientId":10,"emailAddress":"346712481@qq.com;","emailSendCondition":1,"buildingLink":null,"remoteShell":null,"exThreadCount":1,"taskType":1,"browserType":2,"taskTimeout":60,"clientDriverPath":"/TestDriven","project":{"searchValue":null,"createBy":null,"createTime":null,"updateBy":null,"updateTime":null,"remark":null,"params":{},"projectId":2,"projectName":"webUI自动化测试演示项目","deptId":104,"projectSign":"baiduDemo","dept":null,"flag":false},"job":{"searchValue":null,"createBy":null,"createTime":null,"updateBy":null,"updateTime":"2019-11-02 11:55:52","remark":"","params":{},"jobId":101,"jobName":"runAutomationTestTask","jobGroup":"自动化任务调度","methodName":"runTask","methodParams":"1","cronExpression":"0/5 * * * * ? ","misfirePolicy":"2","status":"0","nextValidTime":"2019-11-02 11:56:00"},"projectPlan":{"searchValue":null,"createBy":null,"createTime":null,"updateBy":null,"updateTime":"2019-11-02 11:55:52","remark":"","params":{},"planId":1,"planName":"百度搜索回归测试","planCaseCount":1,"projectId":2,"project":{"searchValue":null,"createBy":null,"createTime":null,"updateBy":null,"updateTime":null,"remark":null,"params":{},"projectId":2,"projectName":"webUI自动化测试演示项目","deptId":104,"projectSign":"baiduDemo","dept":null,"flag":false}},"client":{"searchValue":null,"createBy":null,"createTime":null,"updateBy":null,"updateTime":null,"remark":"","params":{},"clientId":10,"jobId":null,"clientName":"本地PC-window10 测试环境","clientIp":"192.168.15.58","status":0,"checkinterval":null,"clientPath":"/TestDriven","projectIds":null,"statusStr":null,"clientPathList":null},"jobName":null,"cronExpression":null,"misfirePolicy":"3","status":null}],"code":0}
+
+ 3.任务状态
+ POST http://192.168.15.58:8083/monitor/job/changeStatus HTTP/1.1
+
+ 4.服务端--》客户端心跳监测 http://192.168.15.58:6633/getClientStatus
+ ClientHeart--selectTaskCaseExecuteList：任务执行列表
+ select task_case_id, task_id, project_id, case_id, case_sign, case_name, case_status, finish_time, create_by, create_time, update_by, update_time from task_case_execute  order by task_case_id desc;
